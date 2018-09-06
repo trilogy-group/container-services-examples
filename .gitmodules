@@ -1,0 +1,3 @@
+[submodule "spina/spina_sample_app"]
+	path = spina/spina_sample_app
+	url = git@github.com:engineyard/spina_sample_app.git
