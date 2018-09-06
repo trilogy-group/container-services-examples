@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  dbinit:
+    build: .
+    environment:
+      RAILS_ENV: production
+      DB_HOST: $DB_HOST
+      DB_PORT: $DB_PORT
+      DB_NAME: $DB_NAME
+      DB_ADMIN_USER: $DB_ADMIN_USER
+      DB_ADMIN_PASSWORD: $DB_ADMIN_PASSWORD
+      DB_USER: $DB_USER
+      DB_PASSWORD: $DB_PASSWORD
+      SECRET_KEY_BASE: $SECRET_KEY_BASE
+    volumes:
+      - ./scripts/init-db.sh:/usr/local/bin/init-db.sh:ro
+    command: 'init-db.sh'
