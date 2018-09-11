@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  worker:
+    build: .
+    image: $WORKER_REPO_URI:$WORKER_REPO_TAG
