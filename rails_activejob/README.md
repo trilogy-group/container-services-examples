@@ -20,7 +20,7 @@ The `docker-compose.local.yml` file describes the local setup. You can start thr
 6. Start the Sidekiq worker: `docker-compose -f docker-compose.local.yml up -d worker`
 7. Schedule jobs: `docker-compose -f docker-compose.local.yml run --rm -e ECHO_JOB_COUNT=100 web bundle exec rake echo:generate`
 8. View the logs: `docker-compose -f docker-compose.local.yml logs -f`
-9. Open the browser and go to the Sidekiq dashboard at [http://localhost:3000/](http://localhost:3000/sidekiq)
+9. Open the browser and go to the Sidekiq dashboard at [http://localhost:3000/sidekiq](http://localhost:3000/sidekiq)
 10. Clean up: `docker-compose -f docker-compose.local.yml down`
 
 ## Deployment on Engine Yard
