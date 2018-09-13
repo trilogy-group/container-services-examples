@@ -11,7 +11,7 @@ This example deploys a very simple Container Service which does not depend on ot
   2. Use the latest image tag
   3. CPU: 512, Memory: 1024
   4. Environment variable: EY_hello=world
-3. Access the service through the ALB endpoint and:
+3. Access the service through the App Load Balancer endpoint and:
   1. Verify that the /vol1 and /vol2 mounts are shown
   2. Verify that the EY_hello environment variable is shown
   3. Treat yourself to the latest xkcd comic.

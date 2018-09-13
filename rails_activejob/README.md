@@ -28,19 +28,31 @@ The `docker-compose.local.yml` file describes the local setup. You can start thr
 To deploy the app as a Container Service on Engine Yard Cloud, you need to go through the following process.
 
 1. Create a new application
-  1. Rails 5
-  2. Repository: https://github.com/engineyard/rails_activejob_example.git
+  1. Ruby with Rails 5
+  2. Repository: git@github.com:engineyard/rails_activejob_example.git
 2. Create a new environment for the application
-  1. Boot it with a utility instance named "redis"
-  2. Upload the custom cookbooks recipes inside [rails_activejob_example](./rails_activejob_example)
-  3. Deploy the `no-sidekiq-workers` branch of the application.
+  1. Stack: stable-v5-3.0
+  2. Database Stack: PostgreSQL 9.5.x
+  3. Boot the environment with a utility instance named "redis"
+  4. Upload the custom cookbooks recipes inside [rails_activejob_example](./rails_activejob_example)
+  5. Deploy the `no-sidekiq-workers` branch of the application.
 3. Create a Docker Repository for the worker Docker Image
 4. Build the Docker Image: `docker-compose -f docker-compose.deploy.yml build`
 5. Authenticate against the Docker Registry.
+  1. The `docker login` command can be copied from the "Docker Repositories" page.
 6. Push the Docker Image: `docker-compose -f docker-compose.deploy.yml push`
 7. Create a Container Service Definition
-8. Deploy a Container Service
-  1. Define the following environment variables with correct values:
+  1. With one container: sidekiq
+  2. Set the Image repository you created in step 3.
+  3. Yes, the container is essential for the service.
+  4. Click on "Add Container" and then create the Container Service Definition.
+8. Deploy a Container Service from the Container Service Definition
+  1. Choose the same Region and Network as your environment.
+  2. Use the default CPU and Memory reservation and configure the same values in the container configuration (set the CPU limit and Memory hard limit).
+  3. Do not configure load balancing. This service runs workers, no need to access them from outside.
+  4. Configure the sidekiq container.
+  5. Select the "latest" image tag.
+  6. Define the following environment variables:
       ```
       DB_HOST
       DB_PORT=5432
@@ -51,7 +63,10 @@ To deploy the app as a Container Service on Engine Yard Cloud, you need to go th
       REDIS_HOST
       REDIS_PORT=6379
       ```
-9.  Update the environment security group to allow ingress from the security group of the Container Service.
+      Open a support ticket if you have trouble filling in the correct values.
+  7. Click on "Save Container Configuration" and then create the Container Service.
+9.  Request access to the RDS instance from the Container Service
+  1.  Open a support ticket, and our support team will help you with that.
 10. Create some jobs from the application instance: `ECHO_JOB_COUNT=100 bundle exec rake echo:generate`
-11. Open the application URL in the browser and navigate to `/sidekiq`.
-12. Monitor the Sidekiq dashboard to verify the jobs are processed.
+11. Open the application URL in the browser and navigate to the path `/sidekiq`.
+12. Monitor the Sidekiq dashboard to verify the jobs are being processed.
