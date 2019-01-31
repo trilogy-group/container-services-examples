@@ -26,12 +26,11 @@ This example repo uses git submodules. After regular clone make sure that all su
 git submodule update --init
 ```
 
-Use this directory `spina_devspaces` as starting point for following commands.
-
 #### Development flow
 
 You should have Devspaces cli services started and logged to develop with Devspaces.
-The following commands should be issued from **project directory**.
+
+Use this directory `spina_devspaces` as starting point for following commands.
 
 1 - Create Devspaces
 
