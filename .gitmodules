@@ -4,3 +4,6 @@
 [submodule "rails_activejob/rails_activejob_example"]
 	path = rails_activejob/rails_activejob_example
 	url = git@github.com:engineyard/rails_activejob_example.git
+[submodule "spina_devspaces/spina_sample_app"]
+	path = spina_devspaces/spina_sample_app
+	url = git@github.com:engineyard/spina_sample_app.git
