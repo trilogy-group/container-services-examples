@@ -48,7 +48,7 @@ cd ../../spina_sample_app/
 devspaces start spina
 ```
 
-3 - Start containers synchronization
+3 - Start container synchronization
 
 ```bash
 devspaces bind spina
@@ -89,6 +89,11 @@ Using information retrieved in step 4, access the following URL's:
 
 * Application (bound to port 3000):
   * `http://spina.<devspaces-user>.devspaces.io:<published-ports>/admin`
+
+Use the following credentials:
+
+* email: spina@engineyard.com
+* password: engineyard
 
 ### Docker Script Manager (CLI)
 
@@ -142,10 +147,13 @@ bundle exec puma
 
 Access application URLs:
 
-Using information retrieved in step 4, access the following URL's:
-
 * Application (bound to port 3000):
-  * `http://spina.<devspaces-user>.devspaces.io:<published-ports>/admin`
+  * http://localhost:3000/admin
+
+Use the following credentials:
+
+* email: spina@engineyard.com
+* password: engineyard
 
 ### Entrypoint Actions
 
