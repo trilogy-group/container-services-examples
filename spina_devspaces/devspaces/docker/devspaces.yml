@@ -47,7 +47,6 @@ environment-vars:
     value: spina_pwd
     description: Postgres DB connection param
 
-# generic `build` filter cannot be used once we have a source package named `build`.
 sync-ignore: |
   *.rbc
   capybara-*.html

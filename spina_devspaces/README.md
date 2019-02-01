@@ -69,6 +69,8 @@ devspaces exec spina
 
 6 - Configure Spina Development environment
 
+Once synch ends you can copy default configuration files into development folder and configure the build.
+
 ```bash
 cp /opt/devspaces/configs/rails/*.* config/
 bundle install
@@ -130,6 +132,8 @@ devspaces/docker-cli.sh exec
 ```
 
 3 - Configure Spina Development environment
+
+You can copy default configuration files into development folder and configure the build.
 
 ```bash
 cp /opt/devspaces/configs/rails/*.* config/
