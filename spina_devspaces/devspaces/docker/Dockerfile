@@ -51,10 +51,10 @@ ENV PATH        ${PG_DIR}/${PG_VERSION}/bin:$PATH
 
 # Create  postgres user, add repos and install postgres.
 RUN set -eux; \
-	groupadd -r postgres --gid=999; \
-	useradd -r -g postgres --uid=999 --home-dir=${PG_DIR} --shell=/bin/bash postgres; \
-	mkdir -p ${PG_DIR}; \
-	chown -R postgres:postgres ${PG_DIR}; \
+    groupadd -r postgres --gid=999; \
+    useradd -r -g postgres --uid=999 --home-dir=${PG_DIR} --shell=/bin/bash postgres; \
+    mkdir -p ${PG_DIR}; \
+    chown -R postgres:postgres ${PG_DIR}; \
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list' ; \
     wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add - ; \
     apt-get update ; \
