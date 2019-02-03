@@ -1,0 +1,30 @@
+version: '3.2'
+services:
+  spina-devspaces:
+    build:
+      context: ""
+      dockerfile: Dockerfile
+    entrypoint: /opt/devspaces/entrypoint.sh
+    command: tail -f /dev/null
+    volumes:
+    - type: bind
+      source: ../../spina_sample_app
+      target: /data
+    ports:
+    - "3000:3000" # web app http port
+    - "5432:5432" # postgres port
+    environment:
+      RAILS_LOG_TO_STDOUT: "true"
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_ENV: development
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_NAME: spina_db
+      DB_USER: spina_usr
+      DB_PASSWORD: spina_pwd 
+    networks:
+    - spina_network
+    container_name: spina-devspaces
+
+networks:
+  spina_network:

@@ -1,0 +1,78 @@
+--- # devspaces.yml
+name: spina
+description:  Development environment for spina-cms
+
+# If you want to use a different Dockerfile for your DevSpace, provide the path
+# here.
+docker-file: Dockerfile
+
+# If you need additional files when building your Dockerfile, such as some
+# application binaries that your Dockerfile references, list the glob paths to
+# include here. They are relative to this devspaces.yml file.
+docker-build-includes: |
+  **/*
+ports:
+- protocol: http # can be udp|tcp|http
+  port-number: 3000
+  description: web app http port
+- protocol: tcp # can be udp|tcp|http
+  port-number: 5432
+  description: postgres port
+
+environment-vars:
+  # Rails build VARS
+  - name: RAILS_LOG_TO_STDOUT
+    value: true
+    description: rails build param
+  - name: RAILS_SERVE_STATIC_FILES
+    value: true
+    description: rails build param
+  - name: RAILS_ENV
+    value: development
+    description: rails build param
+  # Postgres VARS
+  - name: DB_HOST
+    value: localhost
+    description: Postgres DB connection param
+  - name: DB_PORT
+    value: 5432
+    description: Postgres DB connection param
+  - name: DB_NAME
+    value: spina_db
+    description: Postgres DB connection param
+  - name: DB_USER
+    value: spina_user
+    description: Postgres DB connection param
+  - name: DB_PASSWORD
+    value: spina_pwd
+    description: Postgres DB connection param
+
+sync-ignore: |
+  *.rbc
+  capybara-*.html
+  .rspec
+  /log
+  /tmp
+  /db/*.sqlite3
+  /db/*.sqlite3-journal
+  /public/system
+  /public/uploads
+  /coverage/
+  /spec/tmp
+  *.orig
+  rerun.txt
+  pickle-email-*.html
+  config/initializers/secret_token.rb
+  config/secrets.yml
+  config/puma.rb
+  config/database.yml
+  /config/initializers/devise.rb
+  /cookbooks/custom-rails_secrets/templates/default/secrets.yml.*
+  /.bundle
+  /vendor/bundle
+  .rvmrc
+  /vendor/assets/bower_components
+  *.bowerrc
+  bower.json
+  .powenv
+  .byebug_history

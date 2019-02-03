@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Install ruby-build
+git clone https://github.com/sstephenson/ruby-build.git /usr/local/src/ruby-build
+cd /usr/local/src/ruby-build && ./install.sh
+
+# Install required version
+ruby-build $1 /usr/local
+
+# Install bundler
+gem install bundler
+
+# Remove ruby-build
+rm -rf /usr/local/src/ruby-build \
+       /usr/local/share/ruby-build \
+       /usr/local/bin/ruby-build \
+       /usr/local/bin/rbenv-*
