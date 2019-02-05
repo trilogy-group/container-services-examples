@@ -4,3 +4,6 @@
 [submodule "rails_activejob/rails_activejob_example"]
 	path = rails_activejob/rails_activejob_example
 	url = git@github.com:engineyard/rails_activejob_example.git
+[submodule "rails_activejob_devspaces/rails_activejob_example"]
+	path = rails_activejob_devspaces/rails_activejob_example
+	url = git@github.com:engineyard/rails_activejob_example.git
