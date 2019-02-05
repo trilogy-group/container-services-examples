@@ -1,0 +1,86 @@
+--- # devspaces.yml
+name: RailsActiveJob
+description:  Development environment for rails_activejob.
+
+# If you want to use a different Dockerfile for your DevSpace, provide the path
+# here.
+docker-file: Dockerfile
+
+# If you need additional files when building your Dockerfile, such as some
+# application binaries that your Dockerfile references, list the glob paths to
+# include here. They are relative to this devspaces.yml file.
+docker-build-includes: |
+  **/*
+ports:
+- protocol: http # can be udp|tcp|http
+  port-number: 3000
+  description: web app http port
+
+environment-vars:
+# Rails build VARS
+- name: RAILS_LOG_TO_STDOUT
+  value: true
+  description: rails build param
+- name: RAILS_SERVE_STATIC_FILES
+  value: true
+  description: rails build param
+- name: RAILS_ENV
+  value: production
+  description: rails build param
+# Postgres VARS
+- name: DB_HOST
+  value: localhost
+  description: Postgres DB connection param
+- name: DB_PORT
+  value: 5432
+  description: Postgres DB connection param
+- name: DB_NAME
+  value: sidekiq_db
+  description: Postgres DB connection param
+- name: DB_USER
+  value: sidekiq_usr
+  description: Postgres DB connection param
+- name: DB_PASSWORD
+  value: sidekiq_pwd
+  description: Postgres DB connection param
+# Redis Vars
+- name: REDIS_HOST
+  value: localhost
+  description: Redis connection param
+- name: REDIS_PORT
+  value: 6379
+  description: Redis connection param
+# Secrets Vars
+- name: SECRET_KEY_BASE
+  value: 6c274da024af575b12ffe358ac8381e85060a600d837d08c4bb380079c95f7675db69c30bc0ca96b63ed2b8c121f7311c716433ac21a278d302fafe19145c6b8
+  description: secrets param
+
+sync-ignore: |
+  *.rbc
+  capybara-*.html
+  .rspec
+  /log
+  /tmp
+  /db/*.sqlite3
+  /db/*.sqlite3-journal
+  /public/system
+  /public/uploads
+  /coverage/
+  /spec/tmp
+  *.orig
+  rerun.txt
+  pickle-email-*.html
+  config/initializers/secret_token.rb
+  config/secrets.yml
+  config/puma.rb
+  config/database.yml
+  /config/initializers/devise.rb
+  /cookbooks/custom-rails_secrets/templates/default/secrets.yml.*
+  /.bundle
+  /vendor/bundle
+  .rvmrc
+  /vendor/assets/bower_components
+  *.bowerrc
+  bower.json
+  .powenv
+  .byebug_history
