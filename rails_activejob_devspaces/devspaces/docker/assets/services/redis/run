@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+exec 2>&1
+
+exec chpst -u redis redis-server /etc/redis/redis.conf --daemonize no
